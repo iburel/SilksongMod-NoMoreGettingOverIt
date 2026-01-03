@@ -29,3 +29,17 @@ jobs:
         with:
           name: NoMoreGettingOverIt
           path: bin/Release/netstandard2.1/NoMoreGettingOverIt.dll
+
+      - name: Create Thunderstore package
+        run: |
+          mkdir -p package
+          cp thunderstore/manifest.json package/
+          cp resources/icon-256.png package/icon.png
+          cp README.md package/
+          cp bin/Release/netstandard2.1/NoMoreGettingOverIt.dll package/
+
+      - name: Upload Thunderstore package
+        uses: actions/upload-artifact@v4
+        with:
+          name: NoMoreGettingOverIt-Thunderstore
+          path: package/*
