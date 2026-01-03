@@ -164,7 +164,6 @@ public class SaveState
     public int MaxHealth;
     public int Geo;
     public int Silk;
-    public int ShellShards;
 
     // Player state flags
     public bool FacingRight;
@@ -192,7 +191,6 @@ public class SaveState
             MaxHealth = pd.maxHealth,
             Geo = pd.geo,
             Silk = pd.silk,
-            ShellShards = pd.shellShards,
             FacingRight = hero.cState.facingRight
         };
     }
@@ -222,7 +220,6 @@ public class SaveState
         pd.maxHealth = MaxHealth;
         pd.geo = Geo;
         pd.silk = Silk;
-        pd.shellShards = ShellShards;
 
         // Restore facing direction
         if (hero.cState.facingRight != FacingRight)
