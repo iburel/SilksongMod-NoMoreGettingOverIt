@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <BepInExPluginGuid>com.iwan.nomoregettigoverit</BepInExPluginGuid>
+    <BepInExPluginName>NoMoreGettingOverIt</BepInExPluginName>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Analyzers" Version="1.0.8" PrivateAssets="all" />
+    <PackageReference Include="BepInEx.Core" Version="5.4.21" />
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="1.1.0" />
+    <PackageReference Include="UnityEngine.Modules" Version="6000.0.50" IncludeAssets="compile" />
+    <PackageReference Include="Silksong.GameLibs" Version="1.2.0-silksong1.0.29315" PrivateAssets="all" />
+  </ItemGroup>
+
+  <Import Project="SilksongPath.props" Condition="Exists('SilksongPath.props')" />
+
+  <Target Name="CopyToGame" AfterTargets="Build" Condition="Exists('$(SilksongFolder)')">
+    <!-- Debug -> scripts (hot reload with F6) -->
+    <Copy Condition="'$(Configuration)' == 'Debug'"
+          SourceFiles="$(TargetPath)"
+          DestinationFolder="$(SilksongFolder)/BepInEx/scripts/" />
+    <Copy Condition="'$(Configuration)' == 'Debug'"
+          SourceFiles="$(TargetDir)$(TargetName).pdb"
+          DestinationFolder="$(SilksongFolder)/BepInEx/scripts/" />
+
+    <!-- Release -> plugins -->
+    <Copy Condition="'$(Configuration)' == 'Release'"
+          SourceFiles="$(TargetPath)"
+          DestinationFolder="$(SilksongFolder)/BepInEx/plugins/" />
+  </Target>
+</Project>

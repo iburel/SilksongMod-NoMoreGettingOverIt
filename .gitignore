@@ -1,0 +1,21 @@
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userprefs
+
+# Local settings
+SilksongPath.props
+
+# IDE
+.vs/
+.vscode/
+.idea/
+*.sln.DotSettings.user
+
+# OS generated files
+.DS_Store
+Thumbs.db
