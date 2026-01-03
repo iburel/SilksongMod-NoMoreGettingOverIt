@@ -1,0 +1,7 @@
+{
+    "name": "NoMoreGettingOverIt",
+    "description": "Rewind time by pressing F2. Auto-saves every 10 seconds, keeps 2 minutes of history.",
+    "version_number": "1.0.0",
+    "dependencies": ["BepInEx-BepInExPack_Silksong-5.4.2304"],
+    "website_url": "https://github.com/iburel/SilksongMod-NoMoreGettingOverIt"
+}
